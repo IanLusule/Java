@@ -7,12 +7,12 @@ public class StudentGrades {
         System.out.print("Enter the number of students: ");
         int numStudents = scanner.nextInt();
 
-        // Define arrays to store student information
+        // Define arrays
         int[] sNo = new int[numStudents];
         String[] studentNames = new String[numStudents];
         double[][] subjectScores = new double[numStudents][5]; // Assuming 5 subjects
 
-        // Input student information
+        // Input student info
         for (int i = 0; i < numStudents; i++) {
             System.out.println("Enter details for Student " + (i + 1));
 
@@ -29,7 +29,7 @@ public class StudentGrades {
             }
         }
 
-        // Calculate total and average for each student
+        // Calcu totals & averages
         double[] studentTotals = new double[numStudents];
         double[] studentAverages = new double[numStudents];
 
@@ -40,7 +40,7 @@ public class StudentGrades {
             studentAverages[i] = studentTotals[i] / 5.0;
         }
 
-        // Calculate average for each subject unit
+        // Calc averages @ subject unit
         double[] unitAverages = new double[5];
 
         for (int j = 0; j < 5; j++) {
@@ -51,7 +51,7 @@ public class StudentGrades {
             unitAverages[j] = unitTotal / numStudents;
         }
 
-        // Display the results
+        // Display results
         System.out.println("Student Details:");
         System.out.println("sNo\tName\tSub1\tSub2\tSub3\tSub4\tSub5\tTotal\tAverage");
 
