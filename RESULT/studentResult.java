@@ -1,71 +1,63 @@
 import java.util.Scanner;
 
-class Student {
-    int roll;
-  String name;
-      float mark1;
-    float mark2;
-    float mark3;
-
-    Student(int roll, String name, float mark1, float mark2, float mark3) {
-        this.roll = roll;
- this.name = name;
-   this.mark1 = mark1;
-this.mark2 = mark2;
-   this.mark3 = mark3;                                                   }
-
-
-
-    float getTotalMarks() {
-        return mark1 + mark2 + mark3;
-    }
-
-    float getAverage() {
-        return getTotalMarks() / 3;
-    }
-
-        String getResult() {
-        if (getTotalMarks() >= 200) {
-            return "P";
-        } else {
-            return "F";
-        }
-   
-                         }
-}
-
 public class studentResult {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-           System.out.print("Enter the number of students: ");
+        System.out.print("Enter the number of students: ");
         int numStudents = scanner.nextInt();
+        scanner.nextLine();  // Consume the newline character
 
-    Student[] students = new Student[numStudents];
+        int[] rollNumbers = new int[numStudents];
+        String[] names = new String[numStudents];
+        float[][] marks = new float[numStudents][3];
+        char[] grades = new char[numStudents];
+        char[] results = new char[numStudents];
 
         for (int i = 0; i < numStudents; i++) {
-  System.out.print("Enter the Student Roll Number: ");
-  int rollNumber = scanner.nextInt();
+            System.out.print("Enter ROLL for student " + (i + 1) + ": ");
+            rollNumbers[i] = scanner.nextInt();
+            scanner.nextLine();  // Consume the newline character
 
-  System.out.print("Enter the Student Name: ");
-            String studentName = scanner.next();
+            System.out.print("Enter Name for student " + (i + 1) + ": ");
+            names[i] = scanner.nextLine();
 
-  System.out.print("Enter the Three Marks: ");
-  float mark1 = scanner.nextFloat();
-   float mark2 = scanner.nextFloat();
- float mark3 = scanner.nextFloat();
+            float sum = 0;
 
-              students[i] = new Student(rollNumber, studentName, mark1, mark2, mark3);
+            System.out.print("Enter the Three Marks for student " + (i + 1) + ": ");
+            String[] marksInput = scanner.nextLine().split(" ");
+            if (marksInput.length != 3) {
+                System.out.println("Please enter exactly three marks separated by spaces.");
+                i--; // Decrement i to re-enter details for this student
+                continue;
+            }
+
+            for (int j = 0; j < 3; j++) {
+                marks[i][j] = Float.parseFloat(marksInput[j]);
+                sum += marks[i][j];
+            }
+
+            float average = sum / 3;
+
+            if (average >= 70 && average <= 100) {
+                grades[i] = 'A';
+                results[i] = 'P';
+            } else if (average >= 50 && average < 70) {
+                grades[i] = 'B';
+                results[i] = 'P';
+            } else {
+                grades[i] = 'C';
+                results[i] = 'F';
+            }
         }
-        System.out.println("********************************************************************************************");
-        System.out.println("                             STUDENT MARKLIST                                              ");
-        System.out.println("********************************************************************************************");
-        System.out.println("ROLL\tNAME\tMARK1\tMARK2\tMARK3\tTOTAL\tRESULT\tAVERAGE\tGRADE");
 
-        for (Student student : students) {
-            System.out.println(student.roll + "\t" + student.name + "\t" + student.mark1 + "\t" + student.mark2 + "\t" + student.mark3 + "\t" +
-                    student.getTotalMarks() + "\t" + student.getResult() + "\t" + student.getAverage() + "\t" +
-                    ((student.getAverage() >= 90) ? "A" : (student.getAverage() >= 80) ? "B" : (student.getAverage() >= 70) ? "C" : "D"));
+        System.out.println("*****************************************************************");
+        System.out.println("\t\t\t\t\tSTUDENTS MARKLIST\t\t");
+        System.out.println("*****************************************************************");
+        System.out.println("ROLL\tNAME\tMARK1\tMARK2\tMARK3\tTOTAL\tRESULT\tAVERAGE\tGRADE");
+        for (int i = 0; i < numStudents; i++) {
+            System.out.println(rollNumbers[i] + "\t" + names[i] + "\t" + marks[i][0] + "\t" + marks[i][1] + "\t" + marks[i][2] + "\t" +
+                    (marks[i][0] + marks[i][1] + marks[i][2]) + "\t" + results[i] + "\t" + (marks[i][0] + marks[i][1] + marks[i][2]) / 3 + "\t" + grades[i]);
         }
 
         scanner.close();
