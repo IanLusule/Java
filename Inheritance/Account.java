@@ -52,9 +52,9 @@ class CurrentAccount extends BankAccount {
                 sac.accountHolder();
 
                 System.out.println("\nCURRENT ACCOUNT DETAILS");
-                CurrentAccount cac = new CurrentAccount(2001, "Ian Lusule", "0711000000", "Ian Lusule", 500);
+                CurrentAccount cac = new CurrentAccount(2001, "Ian Lusule", "0711000000", "ianlusule@gmail.com", 500);
                 cac.deposit(300);
-                cac.accountHolder();
+                //cac.accountHolder();
 
             }
         }
