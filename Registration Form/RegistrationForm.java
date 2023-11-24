@@ -24,13 +24,13 @@ public class RegistrationForm extends JFrame implements ActionListener {
   public RegistrationForm() {
     // Set the title, size, layout, and default close operation of the frame
     setTitle("Registration Form");
-    setSize(500, 600);
+    setSize(400, 500);
     setLayout(new BorderLayout());
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // Create the components
     title = new JLabel("Registration Form");
-    title.setFont(new Font("Arial", Font.BOLD, 24));
+    title.setFont(new Font("Arial", Font.BOLD, 18));
     title.setHorizontalAlignment(SwingConstants.CENTER);
 
     nameLabel = new JLabel("Name:");
@@ -40,12 +40,12 @@ public class RegistrationForm extends JFrame implements ActionListener {
     phoneLabel = new JLabel("Phone:");
     addressLabel = new JLabel("Address:");
 
-    nameField = new JTextField(20);
-    usernameField = new JTextField(20);
-    passwordField = new JPasswordField(20);
-    emailField = new JTextField(20);
-    phoneField = new JTextField(20);
-    addressArea = new JTextArea(5, 20);
+    nameField = new JTextField(10);
+    usernameField = new JTextField(10);
+    passwordField = new JPasswordField(10);
+    emailField = new JTextField(10);
+    phoneField = new JTextField(10);
+    addressArea = new JTextArea(5, 10);
     addressArea.setLineWrap(true);
 
     submitButton = new JButton("Submit");
@@ -59,7 +59,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
     message.setForeground(Color.RED);
 
     panel = new JPanel();
-    panel.setLayout(new GridLayout(8, 2, 10, 10));
+    panel.setLayout(new GridLayout(8, 2, 6, 6));
 
     // Add the components to the panel
     panel.add(nameLabel);
